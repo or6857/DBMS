@@ -1,0 +1,56 @@
+SQL>  describe EXAM;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EXAMID                                             NUMBER
+ STUDENTID                                          NUMBER
+ DEPARTMENT                                NOT NULL VARCHAR2(5)
+ MARK1                                              NUMBER
+ MARK2                                              NUMBER
+ MARK3                                              NUMBER
+ MARK4                                              NUMBER
+ MARK5                                              NUMBER
+ TOTAL                                              NUMBER
+ AVERAGE                                            NUMBER
+ GRADE                                              VARCHAR2(1)
+
+SQL> alter table EXAM add primary key (EXAMID);
+
+Table altered.
+
+SQL> describe EXAM;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EXAMID                                    NOT NULL NUMBER
+ STUDENTID                                          NUMBER
+ DEPARTMENT                                NOT NULL VARCHAR2(5)
+ MARK1                                              NUMBER
+ MARK2                                              NUMBER
+ MARK3                                              NUMBER
+ MARK4                                              NUMBER
+ MARK5                                              NUMBER
+ TOTAL                                              NUMBER
+ AVERAGE                                            NUMBER
+ GRADE                                              VARCHAR2(1)
+
+SQL> create table STU_DETAILS
+  2  (
+  3  REG_NO number,
+  4  STU_NAME varchar2(30),
+  5  DOB date NULL,
+  6  ADDRESS varchar2(30) NULL,
+  7  CITY varchar(30) NULL,
+  8  PRIMARY KEY (REG_NO, STU_NAME)
+  9  );
+
+Table created.
+
+SQL> describe STU_DETAILS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                    NOT NULL NUMBER
+ STU_NAME                                  NOT NULL VARCHAR2(30)
+ DOB                                                DATE
+ ADDRESS                                            VARCHAR2(30)
+ CITY                                               VARCHAR2(30)
+
+SQL> Spool off
