@@ -1,0 +1,111 @@
+SQL> CREATE TABLE details
+  2  (
+  3  empno NUMBER,
+  4  empname VARCHAR2(255),
+  5  DOB DATE,
+  6  salary NUMBER,
+  7  designation VARCHAR2(20)
+  8  );
+
+Table created.
+
+SQL> INSERT INTO details VALUES(100,'JOHN',TO_DATE('21-02-2001','DD-MM-YYYY'),50000,'Manager');
+
+1 row created.
+
+SQL>  INSERT INTO details VALUES(100,'WICK',TO_DATE('15-02-2001','DD-MM-YYYY'),25000,'Clerk');
+
+1 row created.
+
+SQL>  INSERT INTO details VALUES(100,'SNM',TO_DATE('23-02-2001','DD-MM-YYYY'),510000,'CEO');
+
+1 row created.
+
+SQL> SELECT * FROM details;
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+       100                                                                      
+JOHN                                                                            
+21-FEB-01      50000 Manager                                                    
+                                                                                
+       100                                                                      
+WICK                                                                            
+15-FEB-01      25000 Clerk                                                      
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+                                                                                
+       100                                                                      
+SNM                                                                             
+23-FEB-01     510000 CEO                                                        
+                                                                                
+
+SQL> SELECT empname, saalary FROM details;
+SELECT empname, saalary FROM details
+                *
+ERROR at line 1:
+ORA-00904: "SAALARY": invalid identifier 
+
+
+SQL> SELECT empname,salary FROM details;
+
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+    SALARY                                                                      
+----------                                                                      
+JOHN                                                                            
+     50000                                                                      
+                                                                                
+WICK                                                                            
+     25000                                                                      
+                                                                                
+SNM                                                                             
+    510000                                                                      
+                                                                                
+
+SQL> UPDATE details SET salary = salary+10000;
+
+3 rows updated.
+
+SQL> SELECT * FROM details;
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+       100                                                                      
+JOHN                                                                            
+21-FEB-01      60000 Manager                                                    
+                                                                                
+       100                                                                      
+WICK                                                                            
+15-FEB-01      35000 Clerk                                                      
+
+     EMPNO                                                                      
+----------                                                                      
+EMPNAME                                                                         
+--------------------------------------------------------------------------------
+DOB           SALARY DESIGNATION                                                
+--------- ---------- --------------------                                       
+                                                                                
+       100                                                                      
+SNM                                                                             
+23-FEB-01     520000 CEO                                                        
+                                                                                
+
+SQL> DELETE FROM details WHERE empname = 'John';
+
+0 rows deleted.
+
+SQL> Spool off
