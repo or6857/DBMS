@@ -1,0 +1,98 @@
+QL>  CREATE TABLE STUDENTS (
+  2  ID INT                           NOT NULL,
+  3  NAME VARCHAR (20) NOT NULL,
+  4  AGE INT                         NOT NULL,
+  5  ADDRESS CHAR (25),
+  6  PRIMARY KEY (ID)
+  7  );
+
+Table created.
+
+SQL>  CREATE TABLE COURSE (COURSE_ID INT NOT NULL,
+  2  COURSE_NAME VARCHAR(20),
+  3  SEMESTER INT NO NULL,
+  4  TOTAL_MARKS INT NOT NULL
+  5  );
+SEMESTER INT NO NULL,
+             *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL>  CREATE TABLE COURSE (COURSE_ID INT NOT NULL,
+  2  COURSE_NAME VARCHAR(20),
+  3  SEMESTER INT NO NULL,
+  4  TOTAL_MARKS INT NOT NULL
+  5
+SQL>  CREATE TABLE COURSE (COURSE_ID INT NOT NULL,
+  2  COURSE_NAME VARCHAR(20),
+  3  SEMESTER INT NOT NULL,
+  4  TOTAL_MARKS INT NOT NULL
+  5  );
+
+Table created.
+
+SQL>  CREATE TABLE COURSES (COURSE_ID INT NOT NULL,
+  2  STUDENT_ID INT NOT NULL,
+  3  COURSE_NAME VARCHAR(20),
+  4  SEMESTER INT NOT NULL,
+  5  TOTAL_MARKS INT NOT NULL
+  6  );
+
+Table created.
+
+SQL> INSERT INTO STUDENTS VALUES (1,'ABC',20,'YYY');
+
+1 row created.
+
+SQL> INSERT INTO STUDENTS VALUES (2,'BCD',15,'ZZZ');
+
+1 row created.
+
+SQL> INSERT INTO STUDENTS VALUES (3,'CDE',20,'XXX');
+
+1 row created.
+
+SQL> INSERT INTO COURSES VALUES (5,2,'MNOP',100);
+INSERT INTO COURSES VALUES (5,2,'MNOP',100)
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> INSERT INTO COURSES VALUES (5,2,'MNOP',4,100);
+
+1 row created.
+
+SQL> INSERT INTO COURSES VALUES (8,3,'XYZABC',5,100);
+
+1 row created.
+
+SQL> INSERT INTO COURSES VALUES (13,1,'SJBVJBVSO',7,50);
+
+1 row created.
+
+SQL> CREATE VIEW STUDENT_MARKS AS
+  2  SELECT ID,NAME,COURSE_NAME,TOTAL_MARKS
+  3  FROM STUDENTS,COURSES
+  4  WHERE STUDENTS.ID=COURSES.STUDENT_ID;
+
+View created.
+
+SQL> SELECT * FROM STUDENT_MARKS;
+
+        ID NAME                 COURSE_NAME          TOTAL_MARKS
+---------- -------------------- -------------------- -----------
+         2 BCD                  MNOP                         100
+         3 CDE                  XYZABC                       100
+         1 ABC                  SJBVJBVSO                     50
+
+SQL>
+SQL>
+
+
+
+
+
+
+
