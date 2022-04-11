@@ -1,0 +1,242 @@
+SQL> show tables
+SP2-0158: unknown SHOW option "tables"
+SQL> show tables;
+SP2-0158: unknown SHOW option "tables"
+SQL> use sales;
+SP2-0042: unknown command "use sales" - rest of line ignored.
+SQL> select concat('san','dan') from dual;
+
+CONCAT                                                                          
+------                                                                          
+sandan                                                                          
+
+SQL> SELECT CHR(65), CHR(97) FROM dual;
+
+C C                                                                             
+- -                                                                             
+A a                                                                             
+
+SQL> SELECT CONCAT('Fname', 'Lname') Emp_name FROM emp;
+
+no rows selected
+
+SQL> 
+SQL> SELECT CONCAT('Fname', 'Lname') Emp_name FROM dual;
+
+EMP_NAME                                                                        
+----------                                                                      
+FnameLname                                                                      
+
+SQL> SELECT INITCAP('oracle tutorial') FROM Dual;
+
+INITCAP('ORACLE                                                                 
+---------------                                                                 
+Oracle Tutorial                                                                 
+
+SQL> select sales from user_table ordery by sales asc;
+select sales from user_table ordery by sales asc
+                                    *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select table_name from user_tables order by table_name asc;
+
+TABLE_NAME                                                                      
+--------------------------------------------------------------------------------
+EMP                                                                             
+LOGIN                                                                           
+SALE                                                                            
+
+SQL> SELECT INSTR('Character','r',1,1) POS1, INSTR('Character','r',1,2) POS2,
+  2  INSTR('Character','a',-1,2) POS3,INSTR('character','c',) POS4
+  3  from dual;
+INSTR('Character','a',-1,2) POS3,INSTR('character','c',) POS4
+                                                       *
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> INSTR('Character','a',-1,2) POS3,INSTR('character','c') POS4 from dual;
+SP2-0734: unknown command beginning "INSTR('Cha..." - rest of line ignored.
+SQL> select length('Sql Tutorial') as len from dual;
+
+       LEN                                                                      
+----------                                                                      
+        12                                                                      
+
+SQL> SELECT LPAD('Oracle',10,'.') lapd_doted from dual;
+
+LAPD_DOTED                                                                      
+----------                                                                      
+....Oracle                                                                      
+
+SQL> SELECT LPAD('RAM', 7) lapd_exa from Dual;
+
+LAPD_EX                                                                         
+-------                                                                         
+    RAM                                                                         
+
+SQL> Select LTRIM('datawarehousing','ing') trim1 , LTRIM('datawarehousing ')  trim2
+  2  , LTRIM('
+  3  datawarehousing') trim3
+  4  
+SQL> 
+SQL> 
+SQL> 
+SQL> , LTRIM('datawarehousing','data') trim4 from dual
+SP2-0734: unknown command beginning ", LTRIM('d..." - rest of line ignored.
+SQL> 
+SQL> select  LTRIM('datawarehousing','data') trim4 from dual;
+
+TRIM4                                                                           
+-----------                                                                     
+warehousing                                                                     
+
+SQL> SELECT TRIM(' Oracle ') trim1, TRIM('Oracle ') trim2 FROM Dual;
+
+TRIM1  TRIM2                                                                    
+------ ------                                                                   
+Oracle Oracle                                                                   
+
+SQL> 
+SQL> SELECT REPLACE (,Oracle", "Ora", "Arti") replace_exa FROM Dual;
+ERROR:
+ORA-01740: missing double quote in identifier 
+
+
+SQL> SELECT REPLACE ("Oracle", "Ora", "Arti") replace_exa FROM Dual;
+SELECT REPLACE ("Oracle", "Ora", "Arti") replace_exa FROM Dual
+                                 *
+ERROR at line 1:
+ORA-00904: "Arti": invalid identifier 
+
+
+SQL> SELECT REPLACE ("Oracle", "Ora", "Art") replace_exa FROM Dual;
+SELECT REPLACE ("Oracle", "Ora", "Art") replace_exa FROM Dual
+                                 *
+ERROR at line 1:
+ORA-00904: "Art": invalid identifier 
+
+
+SQL> SELECT REPLACE ("Oracle", "Ora", "Art") FROM Dual;
+SELECT REPLACE ("Oracle", "Ora", "Art") FROM Dual
+                                 *
+ERROR at line 1:
+ORA-00904: "Art": invalid identifier 
+
+
+SQL> SELECT ABS(-25) "Abs" FROM DUAL;
+
+       Abs                                                                      
+----------                                                                      
+        25                                                                      
+
+SQL> SELECT ACOS(.28)"Arc_Cosine" FROM DUAL;
+
+Arc_Cosine                                                                      
+----------                                                                      
+1.28700222                                                                      
+
+SQL> SELECT ASIN(.6)"Arc_Cosine" FROM DUAL;
+
+Arc_Cosine                                                                      
+----------                                                                      
+.643501109                                                                      
+
+SQL> 
+SQL> SELECT ATAN(.6)"Arc_Cosine" FROM DUAL;
+
+Arc_Cosine                                                                      
+----------                                                                      
+  .5404195                                                                      
+
+SQL> 
+SQL> SELECT FLOOR(15.65) "Floor" FROM DUAL;
+
+     Floor                                                                      
+----------                                                                      
+        15                                                                      
+
+SQL> SELECT CEIL(15.65) "CEIL" FROM DUAL;
+
+      CEIL                                                                      
+----------                                                                      
+        16                                                                      
+
+SQL> SELECT MOD(11,3) "Mod" FROM DUAL;
+
+       Mod                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> 
+SQL> SELECT POWER(3,2) "Power" FROM DUAL;
+
+     Power                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> SELECT ROUND(43.698,1) "Round" FROM DUAL;
+
+     Round                                                                      
+----------                                                                      
+      43.7                                                                      
+
+SQL> 
+SQL> SELECT TRUNC(12.75,1) "Trunc" FROM DUAL;
+
+     Trunc                                                                      
+----------                                                                      
+      12.7                                                                      
+
+SQL> SELECT TRUNC(12.75,-1) "Trunc" FROM DUAL;
+
+     Trunc                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> 
+SQL> SELECT SYSDATE, ADD_MONTHS(SYSDATE,2), ADD_MONTHS(SYSDATE,-2) FROM
+  2  DUAL;
+
+SYSDATE   ADD_MONTH ADD_MONTH                                                   
+--------- --------- ---------                                                   
+15-FEB-22 15-APR-22 15-DEC-21                                                   
+
+SQL> 
+SQL> SELECT SYSDATE, EXTRACT(YEAR FROM SYSDATE)YEAR, EXTRACT(DAY FROM SYSDATE)DAY , EXTRACT(TIMEZONE_HOUR FROM SYSTIMESTAMP) TZH
+  2  FROM DUAL;
+
+SYSDATE         YEAR        DAY        TZH                                      
+--------- ---------- ---------- ----------                                      
+15-FEB-22       2022         15          0                                      
+
+SQL> 
+SQL> SELECT SYSDATE, LAST_DAY(SYSDATE) END_OF_MONTH FROM DUAL;
+
+SYSDATE   END_OF_MO                                                             
+--------- ---------                                                             
+15-FEB-22 28-FEB-22                                                             
+
+SQL> 
+SQL> SELECT NEXT_DAY('31-Aug-18','SUN') "FIRST MONDAY OF SEPTEMBER" FROM DUAL;
+
+FIRST MON                                                                       
+---------                                                                       
+02-SEP-18                                                                       
+
+SQL> SELECT SYSDATE, ROUND(SYSDATE,'MM'), ROUND(SYSDATE,'YYYY') FROM DUAL;
+
+SYSDATE   ROUND(SYS ROUND(SYS                                                   
+--------- --------- ---------                                                   
+15-FEB-22 01-FEB-22 01-JAN-22                                                   
+
+SQL> 
+SQL> SELECT SYSDATE, TRUNC(SYSDATE,'MM'), TRUNC(SYSDATE,'YYYY') FROM DUAL;
+
+SYSDATE   TRUNC(SYS TRUNC(SYS                                                   
+--------- --------- ---------                                                   
+15-FEB-22 01-FEB-22 01-JAN-22                                                   
+
+SQL> Spool off
