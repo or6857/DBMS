@@ -1,0 +1,231 @@
+ CREATE TABLE Employee(
+  2      EmpId integer,
+  3      FirstName varchar(20),
+  4      LastName varchar(20),
+  5      Email varchar(25),
+  6      PhoneNo varchar(25),
+  7      Salary integer
+  8  );
+
+Table created.
+
+SQL> INSERT ALL
+  2    INTO Employee (EmpId, FirstName, LastName) VALUES(4,'Sachin','Tendulkar')
+  3    INTO Customers(CustId, FirstName, LastName, Country) VALUES(1, 'Laura','Bissot', ‘USA')
+  4    INTO Customers(CustId, FirstName, LastName, Gender, Country) VALUES(2, 'Kevin','Weiss','M','ROME')
+  5  ;
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL>  Insert INTO Employee (EmpId, FirstName, LastName) VALUES(4,'Sachin','Tendulkar');
+
+1 row created.
+
+SQL>  Insert INTO Employee (EmpId, FirstName, LastName,Email) VALUES(4,'Sachin','Tendulkar','Sanket,raj01');
+
+1 row created.
+
+SQL> CREATE TABLE Employee3(
+  2      EmpId integer,
+  3      FirstName varchar(20),
+  4      LastName varchar(20),
+  5  gender varchar(20)
+  6  );
+
+Table created.
+
+SQL>  Insert INTO Employee (EmpId, FirstName, LastName,Email) VALUES(4,'Sachin','Tendulkar','Sanket,raj01');
+
+1 row created.
+
+SQL>  Insert INTO Employee (EmpId, FirstName, LastName) VALUES(4,'Sachin','Tendulkar');
+
+1 row created.
+
+SQL> select * form Employee;
+select * form Employee
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select * from Employee;
+
+     EMPID FIRSTNAME            LASTNAME             EMAIL
+---------- -------------------- -------------------- -------------------------
+PHONENO                       SALARY
+------------------------- ----------
+         4 Sachin               Tendulkar
+
+
+         4 Sachin               Tendulkar            Sanket,raj01
+
+
+         4 Sachin               Tendulkar            Sanket,raj01
+
+
+
+     EMPID FIRSTNAME            LASTNAME             EMAIL
+---------- -------------------- -------------------- -------------------------
+PHONENO                       SALARY
+------------------------- ----------
+         4 Sachin               Tendulkar
+
+
+
+SQL> select * from Employee3;
+
+no rows selected
+
+SQL>  Insert INTO Employee3 (EmpId, FirstName, LastName,Email) VALUES(4,'Sachin','Tendulkar','Sanket,raj01');
+ Insert INTO Employee3 (EmpId, FirstName, LastName,Email) VALUES(4,'Sachin','Tendulkar','Sanket,raj01')
+                                                   *
+ERROR at line 1:
+ORA-00904: "EMAIL": invalid identifier
+
+
+SQL>  Insert INTO Employee3 (EmpId, FirstName, LastName,gender) VALUES(4,'Sachin','Tendulkar','M');
+
+1 row created.
+
+SQL>  Insert INTO Employee3 (EmpId, FirstName, LastName) VALUES(4,'Sachin','Tendulkar');
+
+1 row created.
+
+     EMPID FIRSTNAME            LASTNAME             EMAIL
+---------- -------------------- -------------------- -------------------------
+PHONENO                       SALARY
+------------------------- ----------
+         4 Sachin               Tendulkar
+
+
+         4 Sachin               Tendulkar            Sanket,raj01
+
+
+
+SQL> Select * from Emplyee3;
+Select * from Emplyee3
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from Employee3;
+
+no rows selected
+
+SQL> Insert INTO Employee (EmpId, FirstName, LastName,Email) VALUES(4,'Sachin','Tendulkar','Sanket,raj01');
+
+1 row created.
+
+SQL>  Insert INTO Employee (EmpId, FirstName, LastName) VALUES(4,'Sachin','Tendulkar');
+
+1 row created.
+
+SQL>
+SQL> Insert INTO Employee3 (EmpId, FirstName, LastName,gender) VALUES(4,'Sachin','Tendulkar','M');
+
+1 row created.
+
+SQL>
+SQL> 1 row created.
+SQL> Insert INTO Employee3 (EmpId, FirstName, LastName) VALUES(4,'Sachin','Tendulkar');
+
+1 row created.
+
+SQL> Select * from Employee
+  2  LEFT JOIN Employee3;
+LEFT JOIN Employee3
+                  *
+ERROR at line 2:
+ORA-00905: missing keyword
+
+
+SQL> Select * from Employee
+  2  LEFT JOIN Employee3;
+LEFT JOIN Employee3
+                  *
+ERROR at line 2:
+ORA-00905: missing keyword
+
+
+SQL> Select * from Employee
+  2  LEFT JOIN Employee3 on Employee.id=Employee3.id;
+LEFT JOIN Employee3 on Employee.id=Employee3.id
+                                   *
+ERROR at line 2:
+ORA-00904: "EMPLOYEE3"."ID": invalid identifier
+
+
+SQL> Select * from Employee
+  2  LEFT JOIN Employee3 on Employee.EmpId=Employee3.EmpId;
+
+     EMPID FIRSTNAME            LASTNAME             EMAIL
+---------- -------------------- -------------------- -------------------------
+PHONENO                       SALARY      EMPID FIRSTNAME
+------------------------- ---------- ---------- --------------------
+LASTNAME             GENDER
+-------------------- --------------------
+         4 Sachin               Tendulkar
+                                              4 Sachin
+Tendulkar            M
+
+         4 Sachin               Tendulkar            Sanket,raj01
+                                              4 Sachin
+Tendulkar            M
+
+     EMPID FIRSTNAME            LASTNAME             EMAIL
+---------- -------------------- -------------------- -------------------------
+PHONENO                       SALARY      EMPID FIRSTNAME
+------------------------- ---------- ---------- --------------------
+LASTNAME             GENDER
+-------------------- --------------------
+
+         4 Sachin               Tendulkar            Sanket,raj01
+                                              4 Sachin
+Tendulkar            M
+
+         4 Sachin               Tendulkar
+                                              4 Sachin
+
+     EMPID FIRSTNAME            LASTNAME             EMAIL
+---------- -------------------- -------------------- -------------------------
+PHONENO                       SALARY      EMPID FIRSTNAME
+------------------------- ---------- ---------- --------------------
+LASTNAME             GENDER
+-------------------- --------------------
+Tendulkar            M
+
+         4 Sachin               Tendulkar
+                                              4 Sachin
+Tendulkar
+
+         4 Sachin               Tendulkar            Sanket,raj01
+
+     EMPID FIRSTNAME            LASTNAME             EMAIL
+---------- -------------------- -------------------- -------------------------
+PHONENO                       SALARY      EMPID FIRSTNAME
+------------------------- ---------- ---------- --------------------
+LASTNAME             GENDER
+-------------------- --------------------
+                                              4 Sachin
+Tendulkar
+
+         4 Sachin               Tendulkar            Sanket,raj01
+                                              4 Sachin
+Tendulkar
+
+
+     EMPID FIRSTNAME            LASTNAME             EMAIL
+---------- -------------------- -------------------- -------------------------
+PHONENO                       SALARY      EMPID FIRSTNAME
+------------------------- ---------- ---------- --------------------
+LASTNAME             GENDER
+-------------------- --------------------
+         4 Sachin               Tendulkar
+                                              4 Sachin
+Tendulkar
+
+
+8 rows selected.
