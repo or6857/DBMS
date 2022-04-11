@@ -1,0 +1,95 @@
+SQL> 
+SQL> 
+SQL> 
+SQL> CREATE TABLE student ( StudentID varchar PRIMARY KEY, Name TEXT NOT NULL );
+CREATE TABLE student ( StudentID varchar PRIMARY KEY, Name TEXT NOT NULL )
+                                         *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL> CREATE TABLE student ( StudentID VARCHAR PRIMARY KEY, Name TEXT NOT NULL );
+CREATE TABLE student ( StudentID VARCHAR PRIMARY KEY, Name TEXT NOT NULL )
+                                         *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL> CREATE TABLE student ( StudentID VARCHAR(20) PRIMARY KEY, Name TEXT NOT NULL );
+CREATE TABLE student ( StudentID VARCHAR(20) PRIMARY KEY, Name TEXT NOT NULL )
+                                                               *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+SQL> CREATE TABLE student ( StudentID VARCHAR(20) PRIMARY KEY, Name VARCHAR(20) NOT NULL );
+CREATE TABLE student ( StudentID VARCHAR(20) PRIMARY KEY, Name VARCHAR(20) NOT NULL )
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE students ( StudentID VARCHAR(20) PRIMARY KEY, Name VARCHAR(20) NOT NULL );
+
+Table created.
+
+SQL> CREATE TABLE marks ( studentID varchar(20 PRIMARY KEY, Total_marks integer NOT NULL );
+CREATE TABLE marks ( studentID varchar(20 PRIMARY KEY, Total_marks integer NOT NULL )
+                                          *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE marks ( studentID varchar(20) PRIMARY KEY, Total_marks integer NOT NULL );
+
+Table created.
+
+SQL> insert into student values ('V001','abc');
+insert into student values ('V001','abc')
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> insert into students values ('V001','abc');
+
+1 row created.
+
+SQL> insert into students values ('V002','def');
+
+1 row created.
+
+SQL> insert into students values ('V003','dsdff');
+
+1 row created.
+
+SQL> insert into students values ('V004','nrftff');
+
+1 row created.
+
+SQL> insert into marks values ('V001',95);
+
+1 row created.
+
+SQL> insert into marks values ('V002',87);
+
+1 row created.
+
+SQL> insert into marks values ('V003',77);
+
+1 row created.
+
+SQL> insert into marks values ('V004',88);
+
+1 row created.
+
+SQL> select a.studentID, a.Name, b.Total_marks
+  2  from students a, marks b
+  3  where a.studentID = b.studentID AND b.Total_marks > (select Total_marks from marks where studentID = 'V002');
+
+STUDENTID            NAME                 TOTAL_MARKS                           
+-------------------- -------------------- -----------                           
+V001                 abc                           95                           
+V004                 nrftff                        88                           
+
+SQL> spool off
